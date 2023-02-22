@@ -8,6 +8,7 @@
     "preview": "vite preview",
     "build:sanity": "cd studio && npm run build",
     "start:sanity": "cd studio && npm run start",
+    "deploy": "cd studio && sanity deploy",
     "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
     "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
   },
