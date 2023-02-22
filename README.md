@@ -1,11 +1,18 @@
+# Sachin food tracker
+
+Tracking all the food that I eat. Both the frontend and backend are appended within this.
+
+Tech used is Sanity and Sveltekit. Latest versions as on 22 Feb 2023.
+
+Frontend - https://food.sachin.ninja
+Backend - a sanity studio
+
+
 # SvelteKit / Sanity.io starter
 
 _Front-end for your Sanity project, built with [Svelte Kit](https://kit.svelte.dev)._
-
 This template repo is used by Sanity.io to easily create deployed and configured projects through a web interface. You can test it by **[creating this project](https://www.sanity.io/create?template=sanity-io%2Fsanity-template-svelte-kit)**.
-
 The template contains both a Sanity.io Sanity Studio and a front-end in Svelte Kit. Both are deployed on Netlify.
-
 ![The Sanity and SvelteKit powered template](https://github.com/sanity-io/sanity-template-svelte-kit/blob/main/.sanity-template/web.jpg?raw=true)
 
 Want to make a template for Sanity and your favorite front-end framework? We’re still maturing [sanity.io/create](https://sanity.io/create) and our APIs, but do tell us about it on [slack.sanity.io](https://slack.sanity.io).
