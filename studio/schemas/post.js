@@ -1,4 +1,5 @@
 import {defineField, defineType} from 'sanity'
+import {format} from 'date-fns'
 
 export default defineType({
   name: 'post',
@@ -6,24 +7,41 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'consumedAt',
+      title: 'Consumed at',
+      type: 'datetime',
+      initialValue: (new Date()).toISOString()
+    }),
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
+    }),
+    defineField({
+      name: 'date',
+      title: 'Date',
+      type: 'slug',
+      options: {
+        source: (doc) => {
+          const date = format(new Date(doc.consumedAt), "yyyy-MM-dd");
+          return `${date}`;
+        },
+        slugify: (input) =>
+          input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
+      },
     }),
     defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'title',
-        maxLength: 96,
+        source: (doc) => {
+          const date = format(new Date(doc.consumedAt), "yyyy-MM-dd");
+          return `${date}-${doc.title}`;
+        },
+        slugify: (input) =>
+          input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
       },
-    }),
-    defineField({
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: {type: 'author'},
     }),
     defineField({
       name: 'mainImage',
@@ -34,15 +52,50 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}],
+      name: 'spice',
+      title: 'Spice Rating',
+      type: 'number',
+      initialValue: 5,
+      min: 1,
+      max: 5,
+      description: 'Rating 1 being least spicy, 5 being very spicy',
+      options: {
+        range: {
+            min: 1, // Minimum value
+            max: 5, // Maximum value
+            step: 1 // Slider interval
+        },
+        labels: [
+            { value: 1, title: 'Not Spicy' },
+            { value: 2, title: 'Less Spicy' },
+            { value: 3, title: 'Moderate Spicy' },
+            { value: 4, title: 'More Spicy' },
+            { value: 5, title: 'Most' }
+        ]
+    }
     }),
     defineField({
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'datetime',
+      name: 'heavy',
+      title: 'Heavy Meal Rating',
+      type: 'number',
+      initialValue: 5,
+      min: 1,
+      max: 5,
+      description: 'Rating 1 being light meal, 5 being heavy meal',
+      options: {
+        range: {
+            min: 1, // Minimum value
+            max: 5, // Maximum value
+            step: 1 // Slider interval
+        },
+        labels: [
+            { value: 1, title: 'Light' },
+            { value: 2, title: 'Moderately light' },
+            { value: 3, title: 'Moderate' },
+            { value: 4, title: 'Moderately heavy' },
+            { value: 5, title: 'Heavy' }
+        ]
+    }
     }),
     defineField({
       name: 'body',

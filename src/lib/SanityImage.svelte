@@ -33,7 +33,7 @@
   <img
     {loading}
     fetchPriority={loading === 'eager' ? 'high' : undefined}
-    src={urlFor(image).width(maxWidth).fit('fillmax')}
+    src={urlFor(image).width(maxWidth)}
     alt={alt || image.alt || ''}
     class:loaded
     bind:this={imageRef}

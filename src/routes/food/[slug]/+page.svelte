@@ -17,20 +17,28 @@
 
 <h1>{data.post.title}</h1>
 <p>
-  Published {new Date(data.post.publishedAt).toLocaleDateString('en', {
+  Consumed on {new Date(data.post.consumedAt).toLocaleDateString('en', {
     month: 'long',
     day: '2-digit',
-    year: 'numeric'
-  })}
+    year: 'numeric',
+  })} at {new Date(data.post.consumedAt).toLocaleTimeString('en-US',{ 
+    hour: "2-digit", 
+    minute: "2-digit",
+    hour12: true })}
 </p>
-
-<AuthorCard author={data.post.author} />
-
-<hr />
 
 {#if data.post.image}
   <SanityImage image={data.post.image} />
 {/if}
+
+<dl>
+{#if data.post.spice}
+<dt>Spice Level:</dt><dd>{data.post.spice}</dd>
+{/if}
+{#if data.post.heavy}
+<dt>Spice Level:</dt><dd> {data.post.heavy}</dd>
+{/if}
+</dl>
 
 <!-- The preferred method would be to use https://github.com/portabletext/svelte-portabletext for {data.post.body} -->
 {@html toHTML(data.post.body)}

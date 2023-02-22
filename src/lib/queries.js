@@ -5,14 +5,16 @@
 export function getPostsQuery(extraFilter) {
   return /* groq */ `*[
     _type == "post" &&
-    defined(slug.current) &&
-    publishedAt < now()
+    defined(slug.current)
     ${extraFilter ? `&& ${extraFilter}` : ''}
   ] | order(publishedAt desc) {
     title,
     slug,
     "image": mainImage,
-    publishedAt,
+    "date": date.current,
+    spice,
+    heavy,
+    consumedAt
   }`
 }
 

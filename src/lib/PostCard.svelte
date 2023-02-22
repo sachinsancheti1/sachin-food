@@ -5,14 +5,16 @@
 </script>
 
 <article>
-  <h2>
-    <a rel="prefetch" href="/blog/{post.slug.current}">{post.title}</a>
-  </h2>
+  <a rel="prefetch" href="/food/{post.slug.current}">
   {#if post.image}
     <div class="image">
       <SanityImage image={post.image} maxWidth={300} />
     </div>
   {/if}
+  <h2>
+    {post.date} {post.title}
+  </h2>
+</a>
 </article>
 
 <style>
@@ -33,15 +35,13 @@
   }
 
   .image {
-    padding-bottom: 62.5%;
+    padding-bottom: 1rem;
     position: relative;
     overflow: hidden;
+    max-width: 100%;
   }
 
   .image :global(img) {
-    position: absolute;
-    width: 100%;
-    height: 100%;
     object-fit: cover;
     margin: 0;
   }
