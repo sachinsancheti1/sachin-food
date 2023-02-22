@@ -16,6 +16,7 @@ export async function load({params}) {
     await client.fetch(/* groq */ `*[_type == "post" && slug.current == "${params.slug}"][0]{
     ...,
     "image": mainImage,
+    "imageURL": mainImage->url,
 		"author": author->{
 			${AUTHOR_CARD_FRAGMENT}
 		},

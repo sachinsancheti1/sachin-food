@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-  <title>Blog</title>
+  <title>Food History</title>
 </svelte:head>
 
 <h1>Recent food activity</h1>

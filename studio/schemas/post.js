@@ -10,7 +10,7 @@ export default defineType({
       name: 'consumedAt',
       title: 'Consumed at',
       type: 'datetime',
-      initialValue: (new Date()).toISOString()
+      initialValue: new Date().toISOString(),
     }),
     defineField({
       name: 'title',
@@ -23,11 +23,10 @@ export default defineType({
       type: 'slug',
       options: {
         source: (doc) => {
-          const date = format(new Date(doc.consumedAt), "yyyy-MM-dd");
-          return `${date}-${doc.title}`;
+          const date = format(new Date(doc.consumedAt), 'yyyy-MM-dd')
+          return `${date}-${doc.title}`
         },
-        slugify: (input) =>
-          input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
+        slugify: (input) => input.toLowerCase().replace(/\s+/g, '-').slice(0, 200),
       },
     }),
     defineField({
@@ -48,18 +47,18 @@ export default defineType({
       description: 'Rating 1 being least spicy, 5 being very spicy',
       options: {
         range: {
-            min: 1, // Minimum value
-            max: 5, // Maximum value
-            step: 1 // Slider interval
+          min: 1, // Minimum value
+          max: 5, // Maximum value
+          step: 1, // Slider interval
         },
         labels: [
-            { value: 1, title: 'Not Spicy' },
-            { value: 2, title: 'Less Spicy' },
-            { value: 3, title: 'Moderate Spicy' },
-            { value: 4, title: 'More Spicy' },
-            { value: 5, title: 'Most' }
-        ]
-    }
+          {value: 1, title: 'Not Spicy'},
+          {value: 2, title: 'Less Spicy'},
+          {value: 3, title: 'Moderate Spicy'},
+          {value: 4, title: 'More Spicy'},
+          {value: 5, title: 'Most'},
+        ],
+      },
     }),
     defineField({
       name: 'heavy',
@@ -71,18 +70,18 @@ export default defineType({
       description: 'Rating 1 being light meal, 5 being heavy meal',
       options: {
         range: {
-            min: 1, // Minimum value
-            max: 5, // Maximum value
-            step: 1 // Slider interval
+          min: 1, // Minimum value
+          max: 5, // Maximum value
+          step: 1, // Slider interval
         },
         labels: [
-            { value: 1, title: 'Light' },
-            { value: 2, title: 'Moderately light' },
-            { value: 3, title: 'Moderate' },
-            { value: 4, title: 'Moderately heavy' },
-            { value: 5, title: 'Heavy' }
-        ]
-    }
+          {value: 1, title: 'Light'},
+          {value: 2, title: 'Moderately light'},
+          {value: 3, title: 'Moderate'},
+          {value: 4, title: 'Moderately heavy'},
+          {value: 5, title: 'Heavy'},
+        ],
+      },
     }),
     defineField({
       name: 'body',
@@ -98,7 +97,7 @@ export default defineType({
       media: 'mainImage',
     },
     prepare(selection) {
-      return {...selection, subtitle: format(new Date(selection.date), "yyyy-MM-dd")}
+      return {...selection, subtitle: format(new Date(selection.date), 'yyyy-MM-dd')}
     },
   },
 })

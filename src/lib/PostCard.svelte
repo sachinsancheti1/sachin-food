@@ -6,15 +6,16 @@
 
 <article>
   <a rel="prefetch" href="/food/{post.slug.current}">
-  {#if post.image}
-    <div class="image">
-      <SanityImage image={post.image} maxWidth={300} />
-    </div>
-  {/if}
-  <h2>
-    {new Date(post.consumedAt).toLocaleDateString('en-IN')} {post.title}
-  </h2>
-</a>
+    {#if post.image}
+      <div class="image">
+        <SanityImage image={post.image} maxWidth={300} />
+      </div>
+    {/if}
+    <h2>
+      {new Date(post.consumedAt).toLocaleDateString('en-IN')}
+      {post.title}
+    </h2>
+  </a>
 </article>
 
 <style>
