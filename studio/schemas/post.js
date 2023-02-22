@@ -94,11 +94,11 @@ export default defineType({
   preview: {
     select: {
       title: 'title',
-      date: 'date',
+      date: 'consumedAt',
       media: 'mainImage',
     },
     prepare(selection) {
-      return {...selection, subtitle: date}
+      return {...selection, subtitle: format(new Date(selection.date), "yyyy-MM-dd")}
     },
   },
 })
