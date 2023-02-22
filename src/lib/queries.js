@@ -7,11 +7,10 @@ export function getPostsQuery(extraFilter) {
     _type == "post" &&
     defined(slug.current)
     ${extraFilter ? `&& ${extraFilter}` : ''}
-  ] | order(publishedAt desc) {
+  ] | order(consumedAt desc) {
     title,
     slug,
     "image": mainImage,
-    "date": date.current,
     spice,
     heavy,
     consumedAt

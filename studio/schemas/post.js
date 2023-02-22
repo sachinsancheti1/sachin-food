@@ -18,19 +18,6 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'date',
-      title: 'Date',
-      type: 'slug',
-      options: {
-        source: (doc) => {
-          const date = format(new Date(doc.consumedAt), "yyyy-MM-dd");
-          return `${date}`;
-        },
-        slugify: (input) =>
-          input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
-      },
-    }),
-    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -107,12 +94,11 @@ export default defineType({
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
+      date: 'date',
       media: 'mainImage',
     },
     prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
+      return {...selection, subtitle: date}
     },
   },
 })

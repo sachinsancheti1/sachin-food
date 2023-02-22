@@ -10,6 +10,6 @@
   <title>Blog</title>
 </svelte:head>
 
-<h1>Recent posts</h1>
+<h1>Recent food activity</h1>
 
 <PostsGrid posts={data.posts} />

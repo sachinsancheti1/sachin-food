@@ -12,7 +12,7 @@
     </div>
   {/if}
   <h2>
-    {post.date} {post.title}
+    {new Date(post.consumedAt).toLocaleDateString('en-IN')} {post.title}
   </h2>
 </a>
 </article>
@@ -30,7 +30,7 @@
     margin: 1rem 0 0;
   }
 
-  h2 a {
+  a h2 {
     text-decoration: none;
   }
 

@@ -6,6 +6,7 @@ specifiers:
   '@sanity/image-url': ^1.0.1
   '@sveltejs/adapter-auto': ^2.0.0
   '@sveltejs/kit': ^1.7.2
+  date-fns: ^2.29.3
   eslint: ^8.34.0
   eslint-config-prettier: ^8.3.0
   eslint-plugin-svelte3: ^4.0.0
@@ -19,6 +20,7 @@ specifiers:
 dependencies:
   '@sanity/client': 5.2.1
   '@sanity/image-url': 1.0.2
+  date-fns: 2.29.3
 
 devDependencies:
   '@portabletext/to-html': 2.0.0
@@ -570,6 +572,11 @@ packages:
       shebang-command: 2.0.0
       which: 2.0.2
     dev: true
+
+  /date-fns/2.29.3:
+    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
+    engines: {node: '>=0.11'}
+    dev: false
 
   /debug/4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
