@@ -29,14 +29,17 @@
     </h2>
   {/if}
   <div class="pad">
-    {#if post.image}
-      <SanityImage image={post.image} maxWidth={300} />
-    {/if}
-
-    {@html toHTML(post.body)}
-    {#if post.slug}
-      <a href="/food/{post.slug.current}">Link here</a>
-    {/if}
+    <div class="item">
+      {#if post.image}
+        <SanityImage image={post.image} maxWidth={300} />
+      {/if}
+    </div>
+    <div class="item">
+      {@html toHTML(post.body)}
+      {#if post.slug}
+        <a href="/food/{post.slug.current}">Link here</a>
+      {/if}
+    </div>
   </div>
 {/each}
 
@@ -44,5 +47,13 @@
   .pad {
     padding-left: 10px;
     border: 2px solid var(--tertiary-color);
+    display: flex;
+    flex-direction: row;
+  }
+
+  @media (max-width: 600px) {
+    .pad {
+      flex-direction: column;
+    }
   }
 </style>
