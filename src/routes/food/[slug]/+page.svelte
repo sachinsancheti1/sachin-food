@@ -1,10 +1,5 @@
 <script>
   import {toHTML} from '@portabletext/to-html'
-  import Code from '$lib/Code.svelte'
-  import Link from '$lib/Link.svelte'
-  import ImageBlock from '$lib/ImageBlock.svelte'
-  import AuthorBlock from '$lib/AuthorBlock.svelte'
-  import AuthorCard from '$lib/AuthorCard.svelte'
   import SanityImage from '$lib/SanityImage.svelte'
 
   /** @type {import('./$types').PageData} */
@@ -30,7 +25,7 @@
 </p>
 
 {#if data.post.image}
-  <SanityImage image={data.post.image} />
+  <SanityImage image={data.post.image}  maxWidth={300} />
 {/if}
 
 <dl>
@@ -39,7 +34,7 @@
     <dd>{data.post.spice}</dd>
   {/if}
   {#if data.post.heavy}
-    <dt>Spice Level:</dt>
+    <dt>Heavy Level:</dt>
     <dd>{data.post.heavy}</dd>
   {/if}
 </dl>

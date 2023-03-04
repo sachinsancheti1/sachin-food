@@ -7,7 +7,6 @@ Tech used is Sanity and Sveltekit. Latest versions as on 22 Feb 2023.
 Frontend - https://food.sachin.ninja
 Backend - a sanity studio
 
-
 # SvelteKit / Sanity.io starter
 
 _Front-end for your Sanity project, built with [Svelte Kit](https://kit.svelte.dev)._
