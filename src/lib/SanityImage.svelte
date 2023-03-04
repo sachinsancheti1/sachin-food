@@ -16,7 +16,7 @@
   // If we split dimensions by "x", we get the width (1350) and height (900)
   $: [width, height] = dimensions.split('x').map(Number)
 
-  $: aspectRatio = width / height
+  $: aspectRatio = height / width
 
   let imageRef
   // Once loaded, the image will transition to full opacity
@@ -37,7 +37,6 @@
     alt={alt || image.alt || ''}
     class:loaded
     bind:this={imageRef}
-    style="aspect-ratio: {aspectRatio};"
   />
 {/if}
 
