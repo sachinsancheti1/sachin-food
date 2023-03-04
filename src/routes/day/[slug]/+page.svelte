@@ -29,10 +29,14 @@
     </h2>
   {/if}
   <div class="pad">
+    {#if post.image}
+       <SanityImage image={post.image}  maxWidth={300}/>
+    {/if}
+    
+    {@html toHTML(post.body)}
     {#if post.slug}
       <a href="/food/{post.slug.current}">Link here</a>
     {/if}
-    {@html toHTML(post.body)}
   </div>
 {/each}
 
