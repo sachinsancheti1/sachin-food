@@ -1,7 +1,6 @@
 import {error} from '@sveltejs/kit'
 import {AUTHOR_CARD_FRAGMENT, getPostsQuery} from '$lib/queries'
 import {client} from '$lib/sanityClient'
-import {format} from 'date-fns'
 
 /** type {import('./$types').PageLoad} */
 // Fetch all valid posts & authors to display in the homepage

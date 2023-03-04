@@ -1,6 +1,7 @@
 <script>
   import {toHTML} from '@portabletext/to-html'
   import SanityImage from '$lib/SanityImage.svelte'
+  import {format} from 'date-fns'
 
   /** @type {import('./$types').PageData} */
   export let data
@@ -25,7 +26,7 @@
 </p>
 
 {#if data.post.image}
-  <SanityImage image={data.post.image}  maxWidth={300} />
+  <SanityImage image={data.post.image} maxWidth={900} />
 {/if}
 
 <dl>
@@ -41,3 +42,5 @@
 
 <!-- The preferred method would be to use https://github.com/portabletext/svelte-portabletext for {data.post.body} -->
 {@html toHTML(data.post.body)}
+
+<a href="/day/{format(new Date(data.post.consumedAt), 'yyyy-MM-dd')}">Link to entire day history</a>
