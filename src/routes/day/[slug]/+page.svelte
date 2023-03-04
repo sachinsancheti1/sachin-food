@@ -19,13 +19,18 @@
 </h1>
 
 {#each data.posts as post}
-  {#if post.title && post.consumedAt}
+  {#if post.consumedAt}
     <h2>
       {new Date(post.consumedAt).toLocaleTimeString('en-US', {
         hour: '2-digit',
         minute: '2-digit',
         hour12: true
-      })} - {post.title}
+      })}
+      {#if post.title}
+        - {post.title}
+      {:else}
+        - Feeling {post.feelingRating}/5
+      {/if}
     </h2>
   {/if}
   <div class="pad">
@@ -49,6 +54,7 @@
     border: 2px solid var(--tertiary-color);
     display: flex;
     flex-direction: row;
+    column-gap: 10px;
   }
 
   @media (max-width: 600px) {
