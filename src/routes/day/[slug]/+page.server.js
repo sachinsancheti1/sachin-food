@@ -15,7 +15,7 @@ export async function load({params}) {
   const rfcdate1 = setDate(new Date(params.slug), new Date(params.slug).getDate() + 1).toISOString()
   console.log(`From ${rfcdate} to ${rfcdate1}`)
   const {posts} = await client.fetch(/* groq */ `{
-      "posts": *[dateTime(consumedAt) > dateTime(${rfcdate}) && dateTime(consumedAt) < dateTime(${rfcdate1})]{
+      "posts": *[dateTime(consumedAt) > dateTime("${rfcdate}") && dateTime(consumedAt) < dateTime("${rfcdate1}")]{
     ...,
     "image": mainImage
   } | order(consumedAt asc)

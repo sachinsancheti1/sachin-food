@@ -1,5 +1,4 @@
 <script>
-  import AuthorCard from '$lib/AuthorCard.svelte'
   import PostsGrid from '$lib/PostsGrid.svelte'
 
   /** @type {import('./$types').PageData} */

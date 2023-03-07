@@ -14,6 +14,7 @@
   <nav>
     <ul>
       <li><a data-selected={pathname === '/'} href="/">home</a></li>
+      <li><a data-selected={pathname === '/day/'} href="/day/">datewise</a></li>
     </ul>
   </nav>
 </header>
