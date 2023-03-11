@@ -57,6 +57,10 @@
     column-gap: 10px;
   }
 
+  .pad .item {
+    flex: 1 0 300px;
+  }
+
   @media (max-width: 600px) {
     .pad {
       flex-direction: column;
