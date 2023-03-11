@@ -34,17 +34,17 @@
     </h2>
   {/if}
   <div class="pad">
-    <div class="item">
-      {#if post.image}
+    {#if post.image}
+      <div class="item">
         <SanityImage image={post.image} maxWidth={300} />
-      {/if}
-    </div>
-    <div class="item">
-      {@html toHTML(post.body)}
-      {#if post.slug}
+      </div>
+    {/if}
+    {#if post.slug}
+      <div class="item">
+        {@html toHTML(post.body)}
         <a href="/food/{post.slug.current}">Link here</a>
-      {/if}
-    </div>
+      </div>
+    {/if}
   </div>
 {/each}
 
