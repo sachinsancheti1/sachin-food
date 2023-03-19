@@ -13,7 +13,13 @@
         {:else}
           <span class="numb">? </span>
         {/if}
-        <img src="/chilli.svg" alt="spicy meal" width="20px" height="20px" />
+        <img
+          src="/chilli.svg"
+          alt="spicy meal"
+          title="{post?.spice}/5 level spicy meal"
+          width="20px"
+          height="20px"
+        />
       </div>
       <div class="card-inner">
         <a rel="prefetch" href="/food/{post.slug.current}">
@@ -24,19 +30,25 @@
               <SanityImage image={post.image} maxWidth={300} />
             </div>
           {/if}
-          <div>
-            <hr />
-            <small
-              >{format(new Date(post.consumedAt), 'hh:mm')} on
-              <a class="dashing" href="/day/{format(new Date(post.consumedAt), 'yyyy-MM-dd')}"
-                >{format(new Date(post.consumedAt), 'do MMM yy')}</a
-              ></small
-            >
-          </div>
         </a>
+        <div>
+          <hr />
+          <small
+            >{format(new Date(post.consumedAt), 'hh:mm')} on
+            <a class="dashing" href="/day/{format(new Date(post.consumedAt), 'yyyy-MM-dd')}"
+              >{format(new Date(post.consumedAt), 'do MMM yy')}</a
+            ></small
+          >
+        </div>
       </div>
       <div class="card-bottom">
-        <img src="/weight.svg" alt="heavy meal" width="20px" height="20px" />
+        <img
+          src="/weight.svg"
+          alt="heavy meal"
+          title="{post?.heavy}/5 level heavy meal"
+          width="20px"
+          height="20px"
+        />
         {#if post.heavy}
           <span class="numb">{post.heavy} </span>
         {:else}
@@ -71,6 +83,10 @@
     padding: 0 2px 10px 0;
     left: 15px;
     text-align: center;
+  }
+
+  .card small {
+    color: #000;
   }
 
   .card-bottom {
@@ -128,18 +144,13 @@
     text-decoration-line: none;
   }
 
-  :root {
-    --link-color: blue;
-    --link-color-alt: darkblue;
-  }
-
   a,
   a:visited {
-    color: var(--link-color);
+    color: blue;
   }
   a:hover,
   a:focus {
-    color: var(--link-color-alt);
+    color: darkblue;
   }
 
   a h2 {
@@ -148,7 +159,7 @@
     text-decoration-thickness: 1.5px;
   }
 
-  a .dashing {
+  a.dashing {
     text-decoration-style: dashed;
     text-decoration-line: underline;
     text-decoration-thickness: 1px;
