@@ -15,7 +15,8 @@ export function getPostsQuery(extraFilter) {
     "img":mainImage.asset->url,
     spice,
     heavy,
-    consumedAt
+    consumedAt,
+    body
   }`
 }
 

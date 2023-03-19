@@ -1,6 +1,7 @@
 <script>
   import SanityImage from './SanityImage.svelte'
   import {format} from 'date-fns'
+  import {toHTML} from '@portabletext/to-html'
   // import { Image } from "@unpic/svelte";
   export let post
 </script>
@@ -29,8 +30,13 @@
           </h2>
           {#if post.image}
             <div class="image">
-              <SanityImage image={post.image} maxWidth={300} />
-              <!-- <Image src={post.img} width=300 layout="constraint" alt={post.title}/> -->
+              <div class="card--display">
+                <SanityImage image={post.image} maxWidth={300} />
+                <!-- <Image src={post.img} width=300 layout="constraint" alt={post.title}/> -->
+              </div>
+              <div class="card--hover">
+                <p>{@html toHTML(post.body)}</p>
+              </div>
             </div>
           {/if}
         </a>
@@ -201,6 +207,47 @@
     overflow: hidden;
     max-width: 100%;
     border-radius: 5px;
+  }
+
+  .card--display {
+    position: relative;
+    transition: 0.5s ease;
+  }
+
+  .card--hover {
+    position: absolute;
+    transition: 0.5s ease;
+    top: 5px;
+    left: 5px;
+  }
+
+  .card--hover *,
+  .card--hover p {
+    font-size: 1rem;
+    color: #000;
+    margin: 0px;
+  }
+
+  .image:hover .card--hover,
+  .image:focus .card--hover,
+  .image:focus-visible .card--hover,
+  .image:focus-within .card--hover {
+    opacity: 1;
+  }
+
+  .image:hover .card--display,
+  .image:focus .card--display,
+  .image:focus-visible .card--display,
+  .image:focus-within .card--display {
+    opacity: 0.2;
+  }
+
+  .image .card--hover {
+    opacity: 0;
+  }
+
+  .image .card--display {
+    opacity: 1;
   }
 
   .image :global(img) {
