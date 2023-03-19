@@ -31,12 +31,15 @@
 
 {#if browser && image}
   <img
+    decoding="async"
     {loading}
     fetchPriority={loading === 'eager' ? 'high' : undefined}
-    src={urlFor(image).width(maxWidth)}
+    src={urlFor(image).width(maxWidth).auto('format').fit('max')}
     alt={alt || image.alt || ''}
     class:loaded
     bind:this={imageRef}
+    width={maxWidth}
+    height={aspectRatio * maxWidth}
   />
 {/if}
 

@@ -1,6 +1,7 @@
 <script>
   import SanityImage from './SanityImage.svelte'
   import {format} from 'date-fns'
+  // import { Image } from "@unpic/svelte";
   export let post
 </script>
 
@@ -26,8 +27,10 @@
           <h2>
             <span>{post.title}</span>
           </h2>
-          {#if post.image}<div class="image">
+          {#if post.image}
+            <div class="image">
               <SanityImage image={post.image} maxWidth={300} />
+              <!-- <Image src={post.img} width=300 layout="constraint" alt={post.title}/> -->
             </div>
           {/if}
         </a>
@@ -160,31 +163,31 @@
   } */
 
   a h2 span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
 
-a h2 span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-  box-sizing: inherit;
-}
+  a h2 span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    box-sizing: inherit;
+  }
 
-a:hover h2 span {
-  padding-right: 25px;
-}
+  a:hover h2 span {
+    padding-right: 25px;
+  }
 
-a:hover h2 span:after {
-  opacity: 1;
-  right: 0;
-  box-sizing: inherit;
-}
+  a:hover h2 span:after {
+    opacity: 1;
+    right: 0;
+    box-sizing: inherit;
+  }
 
   a.dashing {
     text-decoration-style: dashed;

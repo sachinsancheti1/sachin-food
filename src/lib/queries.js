@@ -12,6 +12,7 @@ export function getPostsQuery(extraFilter) {
     title,
     slug,
     "image": mainImage,
+    "img":mainImage.asset->url,
     spice,
     heavy,
     consumedAt
