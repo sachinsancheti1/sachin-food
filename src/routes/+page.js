@@ -6,7 +6,7 @@ import {client} from '$lib/sanityClient'
 // Fetch all valid posts & authors to display in the homepage
 export async function load() {
   const {posts} = await client.fetch(/* groq */ `{
-		"posts": ${getPostsQuery()}
+		"posts": ${getPostsQuery()}[0...15]
   }`)
   const {authors} = await client.fetch(/* groq */ `{
 		"authors": *[_type == "author" && defined(slug.current) && !(_id in path('drafts.**'))] {
