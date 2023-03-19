@@ -24,7 +24,7 @@
       <div class="card-inner">
         <a rel="prefetch" href="/food/{post.slug.current}">
           <h2>
-            {post.title}
+            <span>{post.title}</span>
           </h2>
           {#if post.image}<div class="image">
               <SanityImage image={post.image} maxWidth={300} />
@@ -153,11 +153,38 @@
     color: darkblue;
   }
 
-  a h2 {
+  /* a h2 {
     text-decoration-style: wavy;
     text-decoration-line: underline;
     text-decoration-thickness: 1.5px;
-  }
+  } */
+
+  a h2 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+a h2 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  box-sizing: inherit;
+}
+
+a:hover h2 span {
+  padding-right: 25px;
+}
+
+a:hover h2 span:after {
+  opacity: 1;
+  right: 0;
+  box-sizing: inherit;
+}
 
   a.dashing {
     text-decoration-style: dashed;
