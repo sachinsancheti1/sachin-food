@@ -11,7 +11,7 @@
     <div class="card">
       <div class="card-top">
         {#if post.spice}
-          <span class="numb">{post.spice} </span>
+          <span class="numb">{post.spice}/5 </span>
         {:else}
           <span class="numb">? </span>
         {/if}
@@ -59,7 +59,7 @@
           height="20px"
         />
         {#if post.heavy}
-          <span class="numb">{post.heavy} </span>
+          <span class="numb">{post.heavy}/5 </span>
         {:else}
           <span class="numb">? </span>
         {/if}
