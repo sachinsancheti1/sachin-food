@@ -9,7 +9,7 @@ export async function load() {
 		"posts": ${getPostsQuery()}
   }`)
   const {authors} = await client.fetch(/* groq */ `{
-		"authors": *[_type == "author" && defined(slug.current)] {
+		"authors": *[_type == "author" && defined(slug.current) && !(_id in path('drafts.**'))] {
 			${AUTHOR_CARD_FRAGMENT}
 		}
   }`)

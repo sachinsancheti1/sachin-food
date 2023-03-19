@@ -12,7 +12,7 @@ export async function load({params}) {
     console.log(`[Server] Opened Page: ${params.slug}`)
   }
   const post =
-    await client.fetch(/* groq */ `*[_type == "post" && slug.current == "${params.slug}"][0]{
+    await client.fetch(/* groq */ `*[_type == "post" && slug.current == "${params.slug}"  && !(_id in path('drafts.**'))][0]{
     ...,
     "image": mainImage,
     "imageURL": mainImage->url,

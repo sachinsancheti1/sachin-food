@@ -6,6 +6,7 @@ export function getPostsQuery(extraFilter) {
   return /* groq */ `*[
     _type == "post" &&
     defined(slug.current)
+    && !(_id in path('drafts.**'))
     ${extraFilter ? `&& ${extraFilter}` : ''}
   ] | order(consumedAt desc) {
     title,

@@ -5,7 +5,7 @@ import {client} from '$lib/sanityClient'
 // Fetch all valid posts & authors to display in the homepage
 export async function load() {
   const {days} = await client.fetch(/* groq */ `{
-    "days": *[defined(consumedAt)]{
+    "days": *[defined(consumedAt) && !(_id in path('drafts.**'))]{
   consumedAt
 } | order(consumedAt asc)
 }`)
