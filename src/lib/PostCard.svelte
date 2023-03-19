@@ -9,11 +9,11 @@
     <div class="card">
       <div class="card-top">
         {#if post.spice}
-        <span class="numb">{post.spice} </span>
+          <span class="numb">{post.spice} </span>
         {:else}
           <span class="numb">? </span>
         {/if}
-        <img src="/chilli.svg" alt="spicy meal" width=20px height=20px>
+        <img src="/chilli.svg" alt="spicy meal" width="20px" height="20px" />
       </div>
       <div class="card-inner">
         <a rel="prefetch" href="/food/{post.slug.current}">
@@ -25,17 +25,20 @@
             </div>
           {/if}
           <div>
-            <hr>
-            <small>{format(new Date(post.consumedAt), 'hh:mm')} on <a class="dashing" href="/day/{format(new Date(post.consumedAt), 'yyyy-MM-dd')}"
-              >{format(new Date(post.consumedAt), 'do MMM yy')}</a
-            ></small>
+            <hr />
+            <small
+              >{format(new Date(post.consumedAt), 'hh:mm')} on
+              <a class="dashing" href="/day/{format(new Date(post.consumedAt), 'yyyy-MM-dd')}"
+                >{format(new Date(post.consumedAt), 'do MMM yy')}</a
+              ></small
+            >
           </div>
         </a>
       </div>
       <div class="card-bottom">
-        <img src="/weight.svg" alt="heavy meal" width=20px height=20px>
+        <img src="/weight.svg" alt="heavy meal" width="20px" height="20px" />
         {#if post.heavy}
-        <span class="numb">{post.heavy} </span>
+          <span class="numb">{post.heavy} </span>
         {:else}
           <span class="numb">? </span>
         {/if}
@@ -54,14 +57,14 @@
   }
 
   hr {
-    background: var(--primary-color); 
-    border: 0; 
-   height: 1px;
-     margin: 0rem 0;
+    background: var(--primary-color);
+    border: 0;
+    height: 1px;
+    margin: 0rem 0;
   }
 
   .card-top {
-    display:inline-flex;
+    display: inline-flex;
     flex-direction: column;
     position: absolute;
     background-color: white;
@@ -71,7 +74,7 @@
   }
 
   .card-bottom {
-    display:inline-flex;
+    display: inline-flex;
     flex-direction: column;
     position: absolute;
     background-color: white;
@@ -117,12 +120,26 @@
   h2 {
     font-size: 1.5rem;
     margin: 2px 0 10px 0;
-    font-weight:400;
+    font-weight: 400;
   }
 
   a {
     text-decoration-style: unset;
     text-decoration-line: none;
+  }
+
+  :root {
+    --link-color: blue;
+    --link-color-alt: darkblue;
+  }
+
+  a,
+  a:visited {
+    color: var(--link-color);
+  }
+  a:hover,
+  a:focus {
+    color: var(--link-color-alt);
   }
 
   a h2 {
