@@ -39,10 +39,10 @@
         <SanityImage image={post.image} maxWidth={300} />
       </div>
     {/if}
-    {#if post.slug}
+    {#if post.body}
       <div class="item">
         {@html toHTML(post.body)}
-        <a href="/food/{post.slug.current}">Link here</a>
+         {#if post.slug}<a href="/food/{post.slug.current}">Link here</a>{/if}
       </div>
     {/if}
   </div>

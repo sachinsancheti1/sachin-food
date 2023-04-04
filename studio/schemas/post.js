@@ -89,7 +89,15 @@ export default defineType({
       type: 'blockContent',
     }),
   ],
-
+  orderings: [
+    {
+      title: 'Date of Meal',
+      name: 'consumedAt',
+      by: [
+        {field: 'consumedAt', direction: 'desc'}
+      ]
+    }
+  ],
   preview: {
     select: {
       title: 'title',
@@ -97,7 +105,7 @@ export default defineType({
       media: 'mainImage',
     },
     prepare(selection) {
-      return {...selection, subtitle: format(new Date(selection.date), 'yyyy-MM-dd')}
+      return {...selection, subtitle: format(new Date(selection.date), 'yyyy-MM-dd HH:mm')}
     },
   },
 })
