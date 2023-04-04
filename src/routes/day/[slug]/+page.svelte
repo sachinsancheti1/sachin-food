@@ -44,11 +44,11 @@
         {@html toHTML(post.body)}
         {#if post.spice}
           <dt>Spice Level:</dt>
-          <dd>{data.post.spice}/5</dd>
+          <dd>{post.spice}/5</dd>
         {/if}
         {#if post.heavy}
           <dt>Heavy Level:</dt>
-          <dd>{data.post.heavy}/5</dd>
+          <dd>{post.heavy}/5</dd>
         {/if}
         {#if post.slug}<a href="/food/{post.slug.current}">Link here</a>{/if}
       </div>
