@@ -91,12 +91,15 @@ export default defineType({
   ],
   orderings: [
     {
-      title: 'Date of Meal',
+      title: 'Desc Date of Meal',
       name: 'consumedAt',
-      by: [
-        {field: 'consumedAt', direction: 'desc'}
-      ]
-    }
+      by: [{field: 'consumedAt', direction: 'desc'}],
+    },
+    {
+      title: 'Asc Date of Meal',
+      name: 'consumedAt',
+      by: [{field: 'consumedAt', direction: 'asc'}],
+    },
   ],
   preview: {
     select: {
