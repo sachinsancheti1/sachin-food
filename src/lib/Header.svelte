@@ -47,4 +47,10 @@
       align-items: center;
     }
   }
+
+  @media print {
+    header * {
+      display: none !important;
+    }
+  }
 </style>
