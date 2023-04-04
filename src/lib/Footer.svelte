@@ -33,6 +33,8 @@
       />
     </svg>
   </a>
+  <br>
+  Fork your own copy from <a href="https://github.com/sachinsancheti1/sachin-food">GitHub</a>
 </footer>
 
 <style>
@@ -47,5 +49,11 @@
   }
   svg {
     width: 50px;
+  }
+
+  @media print {
+    footer * {
+      display: none !important;
+    }
   }
 </style>
