@@ -15,22 +15,22 @@
   "devDependencies": {
     "@portabletext/to-html": "^2.0.0",
     "@sveltejs/adapter-auto": "^2.0.0",
-    "@sveltejs/kit": "^1.11.0",
-    "eslint": "^8.36.0",
-    "eslint-config-prettier": "^8.7.0",
+    "@sveltejs/kit": "^1.15.1",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-svelte3": "^4.0.0",
-    "prettier": "^2.8.4",
-    "prettier-plugin-svelte": "^2.9.0",
-    "svelte": "^3.56.0",
-    "svelte-check": "^3.1.2",
+    "prettier": "^2.8.7",
+    "prettier-plugin-svelte": "^2.10.0",
+    "svelte": "^3.58.0",
+    "svelte-check": "^3.2.0",
     "typescript": "^4.9.5",
-    "vite": "^4.1.4"
+    "vite": "^4.2.1"
   },
   "type": "module",
   "dependencies": {
-    "@sanity/client": "^5.2.2",
+    "@sanity/client": "^5.4.2",
     "@sanity/image-url": "^1.0.2",
-    "@unpic/svelte": "^0.0.14",
+    "@unpic/svelte": "^0.0.17",
     "date-fns": "^2.29.3"
   }
 }

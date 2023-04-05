@@ -32,11 +32,11 @@
 <dl>
   {#if data.post.spice}
     <dt>Spice Level:</dt>
-    <dd>{data.post.spice}</dd>
+    <dd>{data.post.spice}/5</dd>
   {/if}
   {#if data.post.heavy}
     <dt>Heavy Level:</dt>
-    <dd>{data.post.heavy}</dd>
+    <dd>{data.post.heavy}/5</dd>
   {/if}
 </dl>
 
