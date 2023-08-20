@@ -7,11 +7,13 @@
 </script>
 
 <svelte:head>
-  <title>Food Day {new Date(data.posts[0].consumedAt).toLocaleDateString('en', {
-    month: 'long',
-    day: '2-digit',
-    year: 'numeric'
-  })}</title>
+  <title
+    >Food Day {new Date(data.posts[0].consumedAt).toLocaleDateString('en', {
+      month: 'long',
+      day: '2-digit',
+      year: 'numeric'
+    })}</title
+  >
 </svelte:head>
 
 <h1>
