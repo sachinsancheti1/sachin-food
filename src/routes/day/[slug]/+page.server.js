@@ -29,5 +29,5 @@ export async function load({params}) {
       posts
     }
   }
-  throw error(404, 'Not found here')
+  error(404, 'Not found here');
 }

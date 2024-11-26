@@ -25,5 +25,5 @@ export async function load({params: {slug}}) {
     }
   }
 
-  throw error(404, 'Not found')
+  error(404, 'Not found');
 }
