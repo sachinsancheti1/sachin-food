@@ -14,23 +14,23 @@
   },
   "devDependencies": {
     "@portabletext/to-html": "^2.0.14",
-    "@sveltejs/adapter-auto": "^3.3.1",
+    "@sveltejs/adapter-auto": "^5.0.0",
     "@sveltejs/kit": "^2.20.2",
-    "@sveltejs/vite-plugin-svelte": "^4.0.4",
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
     "eslint": "^9.23.0",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-prettier": "^10.1.1",
     "prettier": "^3.5.3",
     "prettier-plugin-svelte": "^3.3.3",
     "svelte": "^5.25.3",
     "svelte-check": "^4.1.5",
     "typescript": "^5.8.2",
-    "vite": "^5.4.15"
+    "vite": "^6.2.3"
   },
   "type": "module",
   "dependencies": {
     "@sanity/client": "^6.28.4",
     "@sanity/image-url": "^1.1.0",
-    "@unpic/svelte": "^0.0.56",
+    "@unpic/svelte": "^1.0.0",
     "date-fns": "^4.1.0"
   }
 }
