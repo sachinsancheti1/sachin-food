@@ -15,4 +15,5 @@ export default defineConfig({
   schema: {
     types: schemaTypes,
   },
+  studioHost: 'sachin-food'
 })
