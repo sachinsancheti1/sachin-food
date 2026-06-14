@@ -11,15 +11,17 @@ export async function load({params}) {
   if (dev) {
     console.log(`[Server] Opened Page: ${params.slug}`)
   }
-  const post =
-    await client.fetch(/* groq */ `*[_type == "post" && slug.current == "${params.slug}"  && !(_id in path('drafts.**'))][0]{
+  const post = await client.fetch(
+    /* groq */ `*[_type == "post" && slug.current == $slug && !(_id in path('drafts.**'))][0]{
     ...,
     "image": mainImage,
     "imageURL": mainImage->url,
 		"author": author->{
 			${AUTHOR_CARD_FRAGMENT}
 		},
-  }`)
+  }`,
+    {slug: params.slug}
+  )
 
   if (post) {
     if (dev) {
@@ -30,5 +32,5 @@ export async function load({params}) {
     }
   }
 
-  error(404, 'Not found');
+  error(404, 'Not found')
 }

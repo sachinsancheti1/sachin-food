@@ -1,33 +1,38 @@
 import {error} from '@sveltejs/kit'
 import {client} from '$lib/sanityClient'
 import {dev} from '$app/environment'
-import {setDate} from 'date-fns'
+import {addDays} from 'date-fns'
 export const csr = false
-
-// Gets a specific blog post from its slug.current value
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({params}) {
   if (dev) {
     console.log(`[Server] Opened Page: ${params.slug}`)
   }
-  const rfcdate = new Date(params.slug).toISOString()
-  const rfcdate1 = setDate(new Date(params.slug), new Date(params.slug).getDate() + 1).toISOString()
-  console.log(`From ${rfcdate} to ${rfcdate1}`)
-  const {posts} = await client.fetch(/* groq */ `{
-      "posts": *[dateTime(consumedAt) > dateTime("${rfcdate}") && dateTime(consumedAt) < dateTime("${rfcdate1}")  && !(_id in path('drafts.**'))]{
-    ...,
-    "image": mainImage
-  } | order(consumedAt asc)
-}`)
+
+  const parsed = new Date(params.slug)
+  if (isNaN(parsed.getTime())) {
+    error(400, 'Invalid date')
+  }
+
+  const rfcdate = parsed.toISOString()
+  const rfcdate1 = addDays(parsed, 1).toISOString()
+
+  const {posts} = await client.fetch(
+    /* groq */ `{
+      "posts": *[dateTime(consumedAt) > dateTime($from) && dateTime(consumedAt) < dateTime($to) && !(_id in path('drafts.**'))]{
+        ...,
+        "image": mainImage
+      } | order(consumedAt asc)
+    }`,
+    {from: rfcdate, to: rfcdate1}
+  )
 
   if (posts) {
     if (dev) {
       console.log(`[Server] Day opened is ${params.slug}`)
     }
-    return {
-      posts
-    }
+    return {posts}
   }
-  error(404, 'Not found here');
+  error(404, 'Not found here')
 }

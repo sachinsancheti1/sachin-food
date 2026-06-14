@@ -4,7 +4,7 @@
   import {format} from 'date-fns'
 
   /** @type {import('./$types').PageData} */
-  export let data
+  let {data} = $props()
 </script>
 
 <svelte:head>
@@ -40,7 +40,6 @@
   {/if}
 </dl>
 
-<!-- The preferred method would be to use https://github.com/portabletext/svelte-portabletext for {data.post.body} -->
 {@html toHTML(data.post.body)}
 
 <a href="/day/{format(new Date(data.post.consumedAt), 'yyyy-MM-dd')}">Link to entire day history</a>

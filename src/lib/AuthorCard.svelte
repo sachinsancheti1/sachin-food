@@ -1,7 +1,7 @@
 <script>
   import SanityImage from './SanityImage.svelte'
 
-  export let author
+  let {author} = $props()
 </script>
 
 {#if author?.name}

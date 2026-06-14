@@ -7,14 +7,15 @@ export const csr = false
 
 // Gets a specific author from its slug.current value
 export async function load({params: {slug}}) {
-  const author =
-    await client.fetch(/* groq */ `*[_type == "author" && slug.current == "${slug}"  && !(_id in path('drafts.**'))][0]{
+  const author = await client.fetch(
+    /* groq */ `*[_type == "author" && slug.current == $slug && !(_id in path('drafts.**'))][0]{
     ...,
 		"posts": ${getPostsQuery(`
-			// Get every post that includes the current document _id in its authors[]
 			references(^._id)
 		`)}
-  }`)
+  }`,
+    {slug}
+  )
 
   if (author) {
     if (dev) {
@@ -25,5 +26,5 @@ export async function load({params: {slug}}) {
     }
   }
 
-  error(404, 'Not found');
+  error(404, 'Not found')
 }

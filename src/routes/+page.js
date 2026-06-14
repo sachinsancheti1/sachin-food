@@ -2,7 +2,7 @@ import {error} from '@sveltejs/kit'
 import {AUTHOR_CARD_FRAGMENT, getPostsQuery} from '$lib/queries'
 import {client} from '$lib/sanityClient'
 
-/** type {import('./$types').PageLoad} */
+/** @type {import('./$types').PageLoad} */
 // Fetch all valid posts & authors to display in the homepage
 export async function load() {
   const {posts} = await client.fetch(/* groq */ `{
@@ -21,5 +21,5 @@ export async function load() {
     }
   }
 
-  error(404, 'Not found');
+  error(404, 'Not found')
 }

@@ -1,7 +1,7 @@
 <script>
   import PostCard from '$lib/PostCard.svelte'
 
-  export let posts = []
+  let {posts = []} = $props()
 </script>
 
 <section>

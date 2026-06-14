@@ -1,12 +1,8 @@
-<script context="module">
-  import {page} from '$app/stores'
-</script>
-
 <script>
-  export let blogTitle = 'My Blog'
+  import {page} from '$app/state'
 
-  let path
-  $: ({pathname} = $page)
+  let {blogTitle = 'My Blog'} = $props()
+  const pathname = $derived(page.url.pathname)
 </script>
 
 <header>

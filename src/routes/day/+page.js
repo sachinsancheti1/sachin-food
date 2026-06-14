@@ -28,16 +28,13 @@ export async function load() {
   const uniquedays = Object.values(
     formatday.reduce((acc, obj) => {
       const [[key, val]] = Object.entries(obj)
-      return (acc[val] = {[key]: val}), acc
+      return ((acc[val] = {[key]: val}), acc)
     }, {})
   )
 
   if (uniquedays) {
-    console.log(uniquedays)
-    return {
-      uniquedays
-    }
+    return {uniquedays}
   }
 
-  error(404, 'Not found');
+  error(404, 'Not found')
 }

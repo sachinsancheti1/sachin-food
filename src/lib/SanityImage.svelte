@@ -1,30 +1,23 @@
 <script>
   import {urlFor} from './sanityClient'
-  import {onMount} from 'svelte'
   import {browser} from '$app/environment'
 
-  export let image
-  export let maxWidth = 1200
-  export let alt = undefined
-  export let loading = 'lazy'
+  let {image, maxWidth = 1200, alt = undefined, loading = 'lazy'} = $props()
 
-  // Example image document ID: image-cc93b69600f5cd1abce97fd0d4aa71793dbbba76-1350x900-png
-  // Structure: image-${storedImgId}-${dimensions}-${format}
+  // Asset ref format: image-${storedImgId}-${dimensions}-${format} (e.g. image-abc123-1350x900-png)
+  const dimensions = $derived(image?.asset?._ref?.split('-')[2])
+  const width = $derived(dimensions ? Number(dimensions.split('x')[0]) : maxWidth)
+  const height = $derived(dimensions ? Number(dimensions.split('x')[1]) : maxWidth)
+  const aspectRatio = $derived(width > 0 ? height / width : 1)
 
-  // If we split it by "-", the 3rd element are the dimensions (1350x900)
-  $: dimensions = image?.asset?._ref?.split('-')[2]
-  // If we split dimensions by "x", we get the width (1350) and height (900)
-  $: [width, height] = dimensions.split('x').map(Number)
+  let imageRef = $state(null)
+  let loaded = $state(false)
 
-  $: aspectRatio = height / width
-
-  let imageRef
-  // Once loaded, the image will transition to full opacity
-  let loaded = false
-
-  onMount(() => {
-    imageRef.onload = () => {
-      loaded = true
+  $effect(() => {
+    if (imageRef) {
+      imageRef.onload = () => {
+        loaded = true
+      }
     }
   })
 </script>
@@ -33,7 +26,7 @@
   <img
     decoding="async"
     {loading}
-    fetchPriority={loading === 'eager' ? 'high' : undefined}
+    fetchpriority={loading === 'eager' ? 'high' : undefined}
     src={urlFor(image).width(maxWidth).auto('format').fit('max')}
     alt={alt || image.alt || ''}
     class:loaded
@@ -43,7 +36,6 @@
   />
 {/if}
 
-<!-- some optional effects to make image loading look nicer -->
 <style>
   img {
     opacity: 0;

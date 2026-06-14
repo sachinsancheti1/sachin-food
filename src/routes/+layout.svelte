@@ -1,19 +1,20 @@
 <script>
   import Header from '$lib/Header.svelte'
   import Footer from '$lib/Footer.svelte'
+
+  let {children} = $props()
 </script>
 
-<Header blogTitle={'Food History'} />
+<Header blogTitle="Food History" />
 
 <main style="padding: 1em">
-  <slot />
+  {@render children()}
 </main>
 
 <Footer />
 
 <style>
   /* this template uses VanillaCSS: https://vanillacss.com/ */
-  /* you can use the values below to create your own theme colors  */
 
   /* Default Variables */
   :root {

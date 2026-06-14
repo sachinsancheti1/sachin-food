@@ -3,28 +3,36 @@
   import SanityImage from '$lib/SanityImage.svelte'
 
   /** @type {import('./$types').PageData} */
-  export let data
+  let {data} = $props()
 </script>
 
 <svelte:head>
-  <title
-    >Food Day {new Date(data.posts[0].consumedAt).toLocaleDateString('en', {
+  {#if data.posts.length > 0}
+    <title>
+      Food Day {new Date(data.posts[0].consumedAt).toLocaleDateString('en', {
+        month: 'long',
+        day: '2-digit',
+        year: 'numeric'
+      })}
+    </title>
+  {:else}
+    <title>Food Day</title>
+  {/if}
+</svelte:head>
+
+{#if data.posts.length > 0}
+  <h1>
+    All Data for {new Date(data.posts[0].consumedAt).toLocaleDateString('en', {
       month: 'long',
       day: '2-digit',
       year: 'numeric'
-    })}</title
-  >
-</svelte:head>
+    })}
+  </h1>
+{:else}
+  <h1>No entries for this day</h1>
+{/if}
 
-<h1>
-  All Data for {new Date(data.posts[0].consumedAt).toLocaleDateString('en', {
-    month: 'long',
-    day: '2-digit',
-    year: 'numeric'
-  })}
-</h1>
-
-{#each data.posts as post}
+{#each data.posts as post (post._id)}
   {#if post.consumedAt}
     <h2>
       {new Date(post.consumedAt).toLocaleTimeString('en-US', {

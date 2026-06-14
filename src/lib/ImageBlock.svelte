@@ -1,8 +1,8 @@
 <script>
   import SanityImage from './SanityImage.svelte'
 
-  export let portableText
-  $: ({value} = portableText)
+  let {portableText} = $props()
+  const value = $derived(portableText.value)
 </script>
 
 {#if value.asset}

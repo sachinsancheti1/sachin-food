@@ -2,8 +2,8 @@
   import SanityImage from './SanityImage.svelte'
   import {format} from 'date-fns'
   import {toHTML} from '@portabletext/to-html'
-  // import { Image } from "@unpic/svelte";
-  export let post
+
+  let {post} = $props()
 </script>
 
 <article>
@@ -24,7 +24,7 @@
         />
       </div>
       <div class="card-inner">
-        <a rel="prefetch" href="/food/{post.slug.current}">
+        <a data-sveltekit-preload-data="hover" href="/food/{post.slug.current}">
           <h2>
             <span>{post.title}</span>
           </h2>
@@ -32,7 +32,6 @@
             <div class="image">
               <div class="card--display">
                 <SanityImage image={post.image} maxWidth={300} />
-                <!-- <Image src={post.img} width=300 layout="constraint" alt={post.title}/> -->
               </div>
               <div class="card--hover">
                 <p>{@html toHTML(post.body)}</p>
@@ -161,12 +160,6 @@
   a:focus {
     color: darkblue;
   }
-
-  /* a h2 {
-    text-decoration-style: wavy;
-    text-decoration-line: underline;
-    text-decoration-thickness: 1.5px;
-  } */
 
   a h2 span {
     cursor: pointer;
