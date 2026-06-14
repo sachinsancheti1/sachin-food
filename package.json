@@ -14,8 +14,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
-    "@portabletext/to-html": "^2.0.14",
-    "@sveltejs/adapter-auto": "^6.1.1",
+    "@sveltejs/adapter-auto": "^7.0.1",
     "@sveltejs/kit": "^2.65.0",
     "@sveltejs/vite-plugin-svelte": "^6.2.4",
     "eslint": "^9.32.0",
@@ -31,9 +30,9 @@
   },
   "type": "module",
   "dependencies": {
+    "@portabletext/to-html": "^2.0.14",
     "@sanity/client": "^7.22.1",
     "@sanity/image-url": "^1.2.0",
-    "@unpic/svelte": "^1.0.0",
     "date-fns": "^4.1.0"
   },
   "packageManager": "pnpm@10.13.0",
@@ -42,7 +41,11 @@
       "rollup": ">=4.59.0",
       "flatted": ">=3.4.2",
       "picomatch": ">=4.0.4",
-      "minimatch": ">=3.1.4"
+      "minimatch": ">=3.1.4",
+      "ajv": "^6.14.0",
+      "js-yaml": ">=4.1.1",
+      "postcss": ">=8.5.10",
+      "esbuild": ">=0.28.1"
     }
   }
 }
